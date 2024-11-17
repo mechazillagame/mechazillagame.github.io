@@ -16,6 +16,7 @@ let weather;
 let weatherText;
 let rain;
 let snow;
+let xvel;
 
 //GAME SCREEN DOM
 
@@ -174,15 +175,19 @@ function showConfig2() {
   }
 
 function showGame3() {
-  //background(catchSiteBg);
+  background(catchSiteBg);
+  tint(255, 127);
   if (weather === 0) {
-    background(catchSiteBg);
+    xvel = 0;
   } else if (weather === 1) {
     background(rain);
+    xvel = 2;
   } else if (weather === 2) {
     background(snow);
+    xvel = 4;
   }
   landing.pos = { x: 350, y: 590 };
+  tint(255, 255);
   
   //hiding stuff
   button.position(-100, -100);
@@ -206,7 +211,7 @@ function showGame3() {
       'rgba(255, 0, 0, 0.5)', 
       "GAME OVER", 
       "You crashed into the Mechazilla.", 
-      "Try decreasing the wind speed and choosing nicer weather.");
+      "Try decreasing the wind speed and choosing nicer weather,\nand ensure the booster lands perpendicularly to the platform.");
   }
   
   /* WIN AND LOSE HERE*/
@@ -218,7 +223,7 @@ function showGame3() {
       'rgba(255, 0, 0, 0.5)', 
       "GAME OVER", 
       "You crashed into the ground.", 
-      "Try decreasing the wind speed and choosing nicer weather.");}
+      "Try decreasing the wind speed and choosing nicer weather,\nand ensure the booster lands perpendicularly to the platform.");}
 
   //WINING PROMPT: if booster collides w invisible sprite
   if (booster.collides(landing)) {
@@ -235,7 +240,7 @@ function boosterMovement() {
   booster.friction = 0;
   if (kb.pressing('left')) booster.velocity.x = -3, booster.rotate(.1, .1);
   else if (kb.pressing('right')) booster.velocity.x = 3, booster.rotate(-.1, -.1);
-  else booster.velocity.x = 0;
+  else booster.velocity.x = xvel;
 
   //up down
   if (kb.pressing('up')) booster.velocity.y = -.5;
