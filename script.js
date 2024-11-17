@@ -118,7 +118,7 @@ function draw() {
 
 function showHome1() {
   background(titleBg);
-    image(logo, width / 2 - 175, height / 2 - 250, 400, 150);
+    image(logo, width / 2 - 88, height / 2 - 200, 200, 75);
   goBtn.position(-200, -200);
   textFont(SpaceX, 50)
   textStyle(BOLD);
