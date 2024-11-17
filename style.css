@@ -1,0 +1,23 @@
+/* @font-face {
+  font-family: "DM Sans";
+  src: url("fonts/DMSans.ttf");
+  src: url("fonts/DMSans.ttf") format("truetype");
+} */
+@font-face {
+  font-family: "SpaceX";
+  src: url("fonts/SpaceX.ttf");
+  src: url("fonts/SpaceX.ttf") format("truetype");
+}
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #0d0149;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+}
+button {
+  font-family: "DM Sans";
+  letter-spacing: 5px;
+}
