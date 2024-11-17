@@ -11,7 +11,7 @@
 
 ## How to Play
 
-Use the arrow keys to attempt to land the Starship booster on the robotic arm.
+Use the arrow keys to attempt to land the Starship booster on the robotic arm, which is the **lowest** rung on the tower.
 
 ➡️ **Right**: Move booster toward the left
 
