@@ -29,6 +29,7 @@ function preload() {
   logo = loadImage('assets/img/logoWBkgd.png');
   rain = loadImage('assets/img/rain.jpg');
   snow = loadImage('assets/img/snow.jpg');
+  titleBg = loadImage('assets/img/titlebg.gif');
 }
 
 // STEP UP RUNS ONCE
@@ -37,7 +38,6 @@ function setup() {
   background('#0d0149');
   textAlign(CENTER);
   textSize(20);
-  image(logo, width / 2 - 175, height / 2 - 250, 400, 150);
 
   //play button
   button = createButton('PLAY');
@@ -117,6 +117,8 @@ function draw() {
 
 
 function showHome1() {
+  background(titleBg);
+    image(logo, width / 2 - 175, height / 2 - 250, 400, 150);
   goBtn.position(-200, -200);
   textFont(SpaceX, 50)
   textStyle(BOLD);
