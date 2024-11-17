@@ -12,6 +12,8 @@ let weatherSlider;
 let landing;
 let barrier;
 let logo;
+let weather;
+let weatherText;
 
 //GAME SCREEN DOM
 
@@ -22,7 +24,8 @@ function preload() {
   mechImg = loadImage('assets/img/mechazilla.png');
   boostImg = loadImage('assets/img/booster.png');
   logo = loadImage('assets/img/logoWBkgd.png');
-  
+  rain = loadImage('assets/img/rain.png');
+  snow = loadImage('assets/img/snow.png');
 }
 
 // STEP UP RUNS ONCE
@@ -170,6 +173,12 @@ function showConfig2() {
 
 function showGame3() {
   background(catchSiteBg);
+  if (weather === 0) {
+    background(catchSiteBg);
+  } else if (weather === 1) {
+    background(rain);
+  } else if (weather === 2) {
+    background(snow);
   landing.pos = { x: 350, y: 590 };
   
   //hiding stuff
