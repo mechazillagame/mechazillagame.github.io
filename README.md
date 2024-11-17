@@ -1,3 +1,4 @@
+![Ascend logo](img/ascendLogo.png)
 # Mechazilla: The Game
 - **What**: Educational game that simulates SpaceX's Mechazilla catching the Starship booster in varying weather conditions
 - **How**: Website made with HTML and CSS, game made with p5.js
