@@ -1,5 +1,5 @@
 //START SCREEN DOM
-let screen = 1;
+var screen = 1;
 let button;
 let goBtn;
 let mechazilla;
@@ -61,7 +61,7 @@ function setup() {
   weatherSlider.position(-300, 200);
 
   /*GO BUTTON*/
-  goBtn = createButton('GO')
+  goBtn = createButton('READY');
   goBtn.mousePressed(() => {
     screen = 3;
   });
@@ -79,7 +79,7 @@ function setup() {
   mechazilla.collider = "n";
 
   // Invisible sprite for detecting collision with mechazilla
-  noStroke()
+  noStroke();
   landing = createSprite(-350, -590, 100, 25);
   landing.collider = "s";
   landing.color = 'rgba(0, 255, 0, 0.25)';
@@ -120,13 +120,14 @@ function showHome1() {
   background(titleBg);
     image(logo, width / 2 - 88, height / 2 - 200, 200, 75);
   goBtn.position(-200, -200);
-  textFont(SpaceX, 50)
+  textFont(SpaceX, 50);
   textStyle(BOLD);
+  textAlign(CENTER);
   fill('#9f8bff');
   text('MECHAZILLA',
     width / 2,
     height / 2);
-  textSize(25)
+  textSize(25);
   text('The Game',
     width / 2,
     height / 2 + 70);
@@ -134,13 +135,14 @@ function showHome1() {
 
 function showConfig2() {
   background('#efecff');
-  goBtn.position(width / 2 - 50, height / 2 + 150);
+  goBtn.position(width / 2 - 85, height / 2 + 200);
   button.position(-200, -200);
 
   //config text
   textStyle(BOLD);
-  textFont(SpaceX)
+  textFont(SpaceX);
   fill('#343cff');
+  textAlign(LEFT);
   text('CONFIGURATION',
     100, 100);
 
@@ -148,7 +150,7 @@ function showConfig2() {
   windSlider.position(50, 250);
   windSlider.style('width', '75%');
 
-  weatherSlider.position(50, 450);
+  weatherSlider.position(50, 400);
   weatherSlider.style('width', '75%');
 
   // Get values from sliders
@@ -161,20 +163,27 @@ function showConfig2() {
   textFont(DMSans);
   textAlign(LEFT);
   text(`Wind Speed: ${value1} MPH`, windSlider.x + windSlider.width / 10, windSlider.y - 20); // Text for slider1
-
-    // Determine weather type
-    let weatherText = "";
-    if (weather === 0) {
-      weatherText = "Sunny";
-    } else if (weather === 1) {
-      weatherText = "Rainy";
-    } else if (weather === 2) {
-      weatherText = "Snowy";
-    }
-
-    // Show weather description
-    text(`Weather: ${weatherText}`, weatherSlider.x + weatherSlider.width / 10, weatherSlider.y - 20);
+  
+  booster.rotation = 0;
+  // Determine weather type
+  let weatherText = "";
+  if (weather === 0) {
+    weatherText = "Sunny";
+  } else if (weather === 1) {
+    weatherText = "Rainy";
+  } else if (weather === 2) {
+    weatherText = "Snowy";
   }
+
+  // Show weather description
+  text(`Weather: ${weatherText}`, weatherSlider.x + weatherSlider.width / 10, weatherSlider.y - 20);
+  textAlign(LEFT);
+  text("Sunny", weatherSlider.x, weatherSlider.y + 50);
+  textAlign(CENTER);
+  text("Rainy", width / 2 - 10, weatherSlider.y + 50);
+  textAlign(RIGHT);
+  text("Snowy", weatherSlider.x + weatherSlider.width, weatherSlider.y + 50);
+}
 
 function showGame3() {
   background(catchSiteBg);
@@ -205,81 +214,92 @@ function showGame3() {
 
   //calling booster movement func
   boosterMovement();
-
-  //BARRIER
-  if (booster.collides(barrier)) {
-    showEnd4(
-      false,
-      'rgba(255, 0, 0, 0.5)', 
-      "GAME OVER", 
-      "You crashed into the Mechazilla.", 
-      "Try decreasing the wind speed and choosing nicer weather,\nand ensure the booster lands perpendicularly to the platform.");
-  }
   
   /* WIN AND LOSE HERE*/
-  //losing prompt
+  //LOSING PROMPT
   if (booster.y >= height) {
     booster.y = height;
     showEnd4(
       false,
-      'rgba(255, 0, 0, 0.5)', 
-      "GAME OVER", 
-      "You crashed into the ground.", 
-      "Try decreasing the wind speed and choosing nicer weather,\nand ensure the booster lands perpendicularly to the platform.");}
-
-  //WINING PROMPT: if booster collides w invisible sprite
-  if (booster.collides(landing)) {
+      "You crashed into the ground.\nTry decreasing the wind speed and choosing nicer weather.");}
+  if (booster.x >= width) {
+    booster.y = height;
     showEnd4(
-      true,
-      'rgba(0, 255, 0, 0.5)', 
-      "SUCCESS", 
-      "You safely landed the Starship booster!", 
-      "Take note of the optimal weather and low wind speed you chose.\nCan you recreate these perfect conditions?");}
-  } //SCREEN THREE ENDS
+      false,
+      "You lost sight of the Starship booster.\nTry decreasing the wind speed and choosing nicer weather.");}
+  if (booster.collides(barrier)) {
+    showEnd4(
+      false,
+      "You crashed into the Mechazilla.\nTry decreasing the wind speed and choosing nicer weather.");
+  }
+
+  //WINNING PROMPT
+  if (booster.collides(landing)) {
+    if (booster.x > landing.x + 40) {
+      showEnd4(
+        false,
+        "You landed off the platform.\nMake sure the booster lands on top of the platform.");}
+    else if (booster.rotation < -10 || booster.rotation > 10) {
+      showEnd4(
+        false,
+        "You landed at a severe angle.\nMake sure the booster lands perpendicular to the platform.");}
+    else {
+      showEnd4(
+        true,
+        "Take note of the optimal weather and low wind speed you chose.\nCan you recreate these perfect conditions?");}
+  }
+} //SCREEN THREE ENDS
 
 function boosterMovement() {
   //left right
   booster.friction = 0;
-  if (kb.pressing('left')) booster.velocity.x = -3, booster.rotate(.1, .1);
-  else if (kb.pressing('right')) booster.velocity.x = 3, booster.rotate(-.1, -.1);
+  if (kb.pressing('left')) {
+    booster.velocity.x = -3;
+    booster.rotate(0.1, 0.1);
+  }
+  else if (kb.pressing('right')) {
+    booster.velocity.x = 3;
+    booster.rotate(-0.1, -0.1);
+  }
   else booster.velocity.x = xvel;
 
   //up down
-  if (kb.pressing('up')) booster.velocity.y = -.5;
-  else if (kb.pressing('down')) booster.velocity.y = 4;
-
+  if (kb.pressing('up')) {
+    booster.velocity.y = -0.5;
+  }
+  else if (kb.pressing('down')) {
+    booster.velocity.y = 4;
+  }
   let windSpeed = windSlider.value();
   booster.velocity.x += windSpeed /10;
 
 } //movement ends
 
-function showEnd4(success, col, result, msg, feedback) {
+function showEnd4(success, msg) {
   screen = 4;
-  
   booster.collider = "s";
   booster.rotation = 0;
   landing.pos = { x: -350, y: -590 };
   mechazilla.pos = { x: -1000, y: -1000 };
   booster.pos = { x: width / 2, y: -200 };
-  background(col);
+  tint(255, 255);
+  background(success ? 'rgba(0, 255, 0, 0.75)' : 'rgba(255, 0, 0, 0.75)');
   textAlign(CENTER);
-  textFont(SpaceX, 50)
-  textStyle(BOLD);
-  fill('black');
-  text(result,
+  textFont(SpaceX, 50);
+  fill('white');
+  text(success ? "SUCCESS" : "GAME OVER",
     width / 2,
     height / 2 - 150);
-  textFont(DMSans, 25);
-  textStyle(NORMAL);
-  text(msg,
+  textFont(DMSans, 30);
+  text(success ? "You safely landed the Starship booster!" : "The Starship booster was destroyed!",
     width / 2,
-    height / 2);
-  textStyle(BOLD);
-  text(feedback,
+    height / 2 - 25);
+  textFont(DMSans, 25);
+  text(msg,
       width/2,
-      height / 2 + 100);
-  button.position(width / 2 - 60, height / 2 + 200);
-  button.html(success ? "YES" : "TRY AGAIN");
+      height / 2 + 75);
+  button.position(width / 2 - 85, height / 2 + 175);
+  button.html(success ? "YES!" : "TRY AGAIN");
   button.style("background-color", success ? "#06402B" : "#8B0000");
   button.style("color", "white");
 }
