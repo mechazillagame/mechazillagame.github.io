@@ -1,4 +1,4 @@
-<p align="center"><img src="transparentLogo.png" alt="Ascend logo" width="200"></p>
+<p align="center"><img src="assets/img/ascendLogo.png" alt="Ascend logo" width="200"></p>
 
 <h1 align="center">🚀 Mechazilla: The Game 🚀</h1>
 
