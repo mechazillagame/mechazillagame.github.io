@@ -1,5 +1,6 @@
-![Ascend logo](assets/img/ascendLogo.png)
-# 🚀 Mechazilla: The Game 🚀
+<p align="center"><img src="transparentLogo.png" alt="Ascend logo" width="200"></p>
+
+<h1 align="center">🚀 Mechazilla: The Game 🚀</h1>
 
 🎮 **What**: An educational game that simulates SpaceX's "Mechazilla" catching the Starship booster in varying weather conditions
 
@@ -9,7 +10,7 @@
 
 👩🏻‍🚀 **Who**: Genesis Camacho, Emely Lugo, and Adriana Zambrano
 
-## 👾 How to Play 👾
+<h2 align="center">👾 How to Play 👾</h2>
 
 1. Move the sliders to adjust the wind speed and weather
 
@@ -30,3 +31,5 @@
     ⬆️ **Up**: Accelerate upwards to **slow down**
 
     ⬇️ **Down**: Accelerate downwards to **speed up**
+
+<p align="center"><a href="https://mechazillagame.github.io/"><img src="play.png" alt="Play button" width="200"></a></p>
