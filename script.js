@@ -17,6 +17,7 @@ let weatherText;
 let rain;
 let snow;
 let xvel;
+let instructions;
 
 //GAME SCREEN DOM
 
@@ -39,12 +40,24 @@ function setup() {
   textAlign(CENTER);
   textSize(20);
 
+  // Instructions button
+  instructions = createButton('INSTRUCTIONS');
+  instructions.mousePressed(() => {
+    window.open('https://mechazillagame.github.io/instructions/');
+  });
+  instructions.position(width / 2 - 113, height / 2 + 100);
+  instructions.style('background-color', '#343cff');
+  instructions.style('color', '#efecff');
+  instructions.style('border', 'none');
+  instructions.style('padding', '20px 40px');
+  instructions.style('border-radius', '16px');
+
   //play button
   button = createButton('PLAY');
   button.mousePressed(() => {
     screen = 2;
   });
-  button.position(width / 2 - 60, height / 2 + 100);
+  button.position(width / 2 - 60, height / 2 + 180);
   button.style('background-color', '#343cff');
   button.style('color', '#efecff');
   button.style('border', 'none');
@@ -118,7 +131,7 @@ function draw() {
 
 function showHome1() {
   background(titleBg);
-    image(logo, width / 2 - 88, height / 2 - 200, 200, 75);
+  image(logo, width / 2 - 88, height / 2 - 200, 200, 75);
   goBtn.position(-200, -200);
   textFont(SpaceX, 50);
   textStyle(BOLD);
@@ -137,6 +150,7 @@ function showConfig2() {
   background('#efecff');
   goBtn.position(width / 2 - 85, height / 2 + 200);
   button.position(-200, -200);
+  instructions.position(-300, -300);
 
   //config text
   textStyle(BOLD);
