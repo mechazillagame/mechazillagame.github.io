@@ -33,3 +33,28 @@
     ⬇️ **Down**: Accelerate downwards to **speed up**
 
 <p align="center"><a href="https://mechazillagame.github.io/"><img src="assets/img/play.png" alt="Play button" width="200"></a></p>
+
+## Local Development
+
+### Prerequisites
+
+- A modern web browser
+
+- A code editor
+
+### How to Run
+
+1. Open a terminal
+
+2. Clone this repository with Git:
+
+    ```bash
+    git clone https://github.com/mechazillagame/mechazillagame.github.io.git
+    cd mechazillagame.github.io
+    ```
+
+3. Open your file explorer
+
+4. Navigate to the `mechazillagame.github.io` directory
+
+5. Open `index.html` in your browser
