@@ -268,10 +268,12 @@ function boosterMovement() {
   //left right
   booster.friction = 0;
   if (kb.pressing('left')) {
+    console.log('left');
     booster.velocity.x = -3;
     booster.rotate(0.1, 0.1);
   }
   else if (kb.pressing('right')) {
+    console.log('right');
     booster.velocity.x = 3;
     booster.rotate(-0.1, -0.1);
   }
@@ -279,9 +281,11 @@ function boosterMovement() {
 
   //up down
   if (kb.pressing('up')) {
+    console.log('up');
     booster.velocity.y = -0.5;
   }
   else if (kb.pressing('down')) {
+    console.log('down');
     booster.velocity.y = 4;
   }
   let windSpeed = windSlider.value();
