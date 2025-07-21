@@ -8,6 +8,10 @@
   src: url("fonts/SpaceX.ttf");
   src: url("fonts/SpaceX.ttf") format("truetype");
 }
+body, html {
+  overscroll-behavior: none;
+  overflow: hidden;
+}
 body {
   height: 100%;
   width: 100%;
