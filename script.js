@@ -300,7 +300,7 @@ function showEnd4(success, msg) {
   mechazilla.pos = { x: -1000, y: -1000 };
   booster.pos = { x: width / 2, y: -200 };
   tint(255, 255);
-  background(success ? 'rgba(0, 255, 0, 0.75)' : 'rgba(255, 0, 0, 0.75)');
+  background(success ? 'rgba(0, 211, 0, 0.75)' : 'rgba(255, 0, 0, 0.75)');
   textAlign(CENTER);
   textFont(SpaceX, 50);
   fill('white');
