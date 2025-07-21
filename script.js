@@ -264,18 +264,14 @@ function showGame3() {
 } //SCREEN THREE ENDS
 
 function boosterMovement() {
-  if (kb.pressing('shift')) {
-    console.log('shift');
-  }
-
   //left right
   booster.friction = 0;
-  if (kb.pressing('arrowLeft')) {
+  if (kb.pressing('left')) {
     console.log('left');
     booster.velocity.x = -3;
     booster.rotate(0.1, 0.1);
   }
-  else if (kb.pressing('arrowRight')) {
+  else if (kb.pressing('right')) {
     console.log('right');
     booster.velocity.x = 3;
     booster.rotate(-0.1, -0.1);
@@ -283,11 +279,11 @@ function boosterMovement() {
   else booster.velocity.x = xvel;
 
   //up down
-  if (kb.pressing('arrowUp')) {
+  if (kb.pressing('up')) {
     console.log('up');
     booster.velocity.y = -0.5;
   }
-  else if (kb.pressing('arrowDown')) {
+  else if (kb.pressing('down')) {
     console.log('down');
     booster.velocity.y = 4;
   }
