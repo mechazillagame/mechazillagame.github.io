@@ -35,7 +35,7 @@ function preload() {
 
 // STEP UP RUNS ONCE
 function setup() {
-  createCanvas(1230, 715);
+  createCanvas(windowWidth, windowHeight);
   background('#0d0149');
   textAlign(CENTER);
   textSize(20);
@@ -127,7 +127,6 @@ function draw() {
   }
 
 } //draw loop ends
-
 
 function showHome1() {
   background(titleBg);
@@ -265,14 +264,18 @@ function showGame3() {
 } //SCREEN THREE ENDS
 
 function boosterMovement() {
+  if (kb.pressing('shift')) {
+    console.log('shift');
+  }
+
   //left right
   booster.friction = 0;
-  if (kb.pressing('left')) {
+  if (kb.pressing('arrowLeft')) {
     console.log('left');
     booster.velocity.x = -3;
     booster.rotate(0.1, 0.1);
   }
-  else if (kb.pressing('right')) {
+  else if (kb.pressing('arrowRight')) {
     console.log('right');
     booster.velocity.x = 3;
     booster.rotate(-0.1, -0.1);
@@ -280,11 +283,11 @@ function boosterMovement() {
   else booster.velocity.x = xvel;
 
   //up down
-  if (kb.pressing('up')) {
+  if (kb.pressing('arrowUp')) {
     console.log('up');
     booster.velocity.y = -0.5;
   }
-  else if (kb.pressing('down')) {
+  else if (kb.pressing('arrowDown')) {
     console.log('down');
     booster.velocity.y = 4;
   }
